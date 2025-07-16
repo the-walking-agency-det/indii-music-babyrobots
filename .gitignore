@@ -1,0 +1,36 @@
+
+# Next.js
+.next/
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/build
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Yarn
+yarn-error.log
+
+# Logs
+*.log
+dev.log
+server.log
+
+/src/generated/prisma
+
+# Tauri
+desktop/src-tauri/target/
+desktop/src-tauri/WixTools/

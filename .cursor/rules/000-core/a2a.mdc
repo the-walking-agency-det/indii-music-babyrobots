@@ -1,0 +1,96 @@
+# Agent-to-Agent (A2A) Protocol Rules
+
+## Overview
+A2A protocol enables structured communication and task delegation between AI agents.
+
+## Core Components
+
+### Agent Cards
+```json
+{
+  "id": "agent-name",
+  "version": "1.0.0",
+  "capabilities": ["capability1", "capability2"],
+  "endpoints": {
+    "capability1": "https://agents.company.com/agent/capability1"
+  },
+  "auth": {
+    "type": "apiKey",
+    "in": "header"
+  }
+}
+```
+
+### Communication Patterns
+1. **REQUEST** - Ask for task execution
+2. **INFORM** - Share information
+3. **OFFER** - Propose capability
+4. **NEGOTIATE** - Discuss parameters
+5. **ACCEPT/DECLINE** - Response to offers
+6. **FORWARD** - Delegate to another agent
+7. **ACK** - Acknowledge receipt
+
+## Implementation Rules
+
+### Agent Registration
+- Publish Agent Card at /.well-known/agent.json
+- Include all supported capabilities
+- Specify auth requirements
+- List available endpoints
+
+### Task Management
+- Generate unique task IDs
+- Track task status
+- Support task cancellation
+- Enable progress updates
+
+### State Management
+- Maintain task context
+- Handle session state
+- Clean up after completion
+- Support resume after failure
+
+### Event Handling
+- Use Server-Sent Events (SSE) for updates
+- Support real-time status changes
+- Enable event filtering
+- Implement retry logic
+
+## Security Guidelines
+
+### Authentication
+- Require auth tokens
+- Validate agent identities
+- Implement role-based access
+- Monitor suspicious activity
+
+### Data Protection
+- Encrypt sensitive data
+- Sanitize inputs/outputs
+- Implement rate limiting
+- Log access attempts
+
+## Integration Patterns
+
+### With MCP
+- Use MCP for tool access
+- Share context between protocols
+- Maintain consistent security
+
+### Multi-Agent Orchestration
+- Define coordinator agents
+- Enable agent discovery
+- Support dynamic routing
+- Handle agent failures
+
+## Performance Considerations
+- Implement timeouts
+- Use connection pooling
+- Cache agent capabilities
+- Monitor latency
+
+## Error Handling
+- Define error types
+- Implement retry logic
+- Provide error details
+- Support fallback options

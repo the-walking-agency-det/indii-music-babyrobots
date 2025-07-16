@@ -1,0 +1,51 @@
+# Master Rules Index
+
+## 000-core/
+Core protocols and fundamental rules for AI interaction
+- mcp.mdc - Model Context Protocol rules
+- a2a.mdc - Agent-to-Agent communication protocol
+- prompt-structure.mdc - Base prompt structuring rules
+
+## 100-personas/
+AI agent personas and their specializations
+- backend-bot.mdc - Backend development specialist
+- frontend-guru.mdc - Frontend and UI specialist
+- data-mind.mdc - Data and ML specialist
+- infra-smith.mdc - Infrastructure specialist
+- security-coach.mdc - Security specialist
+
+## 200-security/
+Security rules and guidelines
+- secure-vibe.mdc - Secure Vibe Coding principles
+- secret-management.mdc - Secrets and credentials handling
+- code-scanning.mdc - Security scanning and validation
+
+## 300-frontend/
+Frontend development rules
+- css-colors.mdc - CSS color management
+- react-patterns.mdc - React best practices
+- ui-components.mdc - UI component guidelines
+
+## 400-backend/
+Backend development rules
+- fastapi-rules.mdc - FastAPI development guidelines
+- uvicorn-deployment.mdc - Uvicorn deployment rules
+- api-design.mdc - API design principles
+
+## 500-testing/
+Testing and QA rules
+- playwright.mdc - Playwright testing guidelines
+- test-patterns.mdc - General testing patterns
+- e2e-testing.mdc - End-to-end testing practices
+
+## 600-infrastructure/
+Infrastructure and deployment rules
+- docker.mdc - Docker configuration rules
+- ci-cd.mdc - CI/CD pipeline rules
+- monitoring.mdc - Monitoring and observability rules
+
+## Version Control
+All rules are version controlled and should be updated through proper PR process.
+
+## Usage
+Rules are automatically loaded by AI agents based on context and task type.

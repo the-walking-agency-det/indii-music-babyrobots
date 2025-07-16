@@ -1,0 +1,71 @@
+# Model Context Protocol (MCP) Rules
+
+## Overview
+MCP serves as a standardized interface for AI agents to access tools, APIs, and external resources.
+
+## Core Principles
+1. Standardized Communication
+   - Use JSON-RPC for structured messaging
+   - Support stdio or HTTP/SSE transports
+   - Enable tool discovery and capability negotiation
+
+2. Security Controls
+   - Require explicit approval for write operations
+   - Maintain audit logs of tool usage
+   - Implement rate limiting and circuit breakers
+
+3. Tool Integration
+   - Expose workspace tools via standard interfaces
+   - Support file operations, terminal commands, and API calls
+   - Enable cross-agent tool sharing
+
+## Implementation Guidelines
+
+### Tool Definition
+```json
+{
+  "name": "example_tool",
+  "description": "What the tool does",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "param1": {"type": "string"}
+    }
+  },
+  "output_schema": {
+    "type": "object"
+  }
+}
+```
+
+### Error Handling
+- Return structured error responses
+- Include error codes and descriptions
+- Maintain error logs for debugging
+
+### Context Management
+- Pass context objects between agents
+- Maintain session state when needed
+- Clean up resources after use
+
+## Deployment Configuration
+- Use `.mcp-config` or `.claude/settings.json` for tool registration
+- Configure timeouts and retry policies
+- Set up monitoring and alerting
+
+## Integration with A2A
+- Enable tool delegation across agents
+- Support capability discovery
+- Maintain context during handoffs
+
+## Security Best Practices
+- Validate all inputs
+- Sanitize outputs
+- Implement proper access controls
+- Monitor for abuse or misuse
+
+## Performance Guidelines
+- Cache frequently used results
+- Implement connection pooling
+- Use appropriate timeout values
+- Monitor resource usage
