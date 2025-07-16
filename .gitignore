@@ -34,3 +34,6 @@ server.log
 # Tauri
 desktop/src-tauri/target/
 desktop/src-tauri/WixTools/
+web/node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node
+node_modules/
+web/node_modules/
