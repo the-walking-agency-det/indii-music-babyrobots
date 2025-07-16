@@ -1,4 +1,4 @@
-import { initializeDatabase, db } from '../../../lib/db.js';
+import { db } from '../../../lib/db.js';
 
 // Initialize database
 initializeDatabase();
