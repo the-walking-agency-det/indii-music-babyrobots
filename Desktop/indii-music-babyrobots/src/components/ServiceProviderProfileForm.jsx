@@ -11,7 +11,7 @@ const ServiceProviderProfileForm = ({ userId, onProfileSaved }) => {
   const [rates, setRates] = useState(''); // JSON string
   const [availabilityStatus, setAvailabilityStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const addToast = useToast();
+  const [isEditing, setIsEditing] = useState(false);
   const addToast = useToast();
 
   useEffect(() => {

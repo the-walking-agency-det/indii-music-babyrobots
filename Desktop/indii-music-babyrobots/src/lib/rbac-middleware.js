@@ -224,14 +224,12 @@ export function requireVerifiedUser(req, res, next) {
     });
   }
 
-  // TODO: Add actual email verification check
-  // const verificationStatus = await emailVerificationService.isEmailVerified(req.user.email);
-  // if (!verificationStatus.verified) {
-  //   return res.status(403).json({
-  //     success: false,
-  //     error: 'Email verification required'
-  //   });
-  // }
+  if (!req.user.emailVerified) {
+    return res.status(403).json({
+      success: false,
+      error: 'Email verification required'
+    });
+  }
 
   next();
 }

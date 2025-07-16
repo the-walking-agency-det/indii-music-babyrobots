@@ -1,39 +1,45 @@
 import '@testing-library/jest-dom';
-import 'whatwg-fetch';
-import 'web-streams-polyfill'; // Import the web-streams-polyfill
-import { TextEncoder, TextDecoder } from 'util';
+import fetchMock from 'jest-fetch-mock';
 
-// Use built-in Node.js TextEncoder/TextDecoder
-if (typeof global.TextEncoder === 'undefined') {
-  global.TextEncoder = TextEncoder;
-}
-if (typeof global.TextDecoder === 'undefined') {
-  global.TextDecoder = TextDecoder;
-}
+fetchMock.enableMocks();
 
-// Mock the performance object for Next.js API route testing
-global.performance = {
-  getEntriesByName: () => [],
-  mark: () => {},
-  measure: () => {},
-  clearMarks: () => {},
-  clearMeasures: () => {},
-};
+// Mock window.confirm
+global.confirm = jest.fn();
 
-// Mock window.confirm globally
-Object.defineProperty(window, 'confirm', {
-  writable: true,
-  value: () => true,
+// Mock fs for db.test.js
+jest.mock('fs', () => ({
+  existsSync: jest.fn(() => true),
+  mkdirSync: jest.fn(),
+}));
+
+// Mock the useToast hook
+jest.mock('./src/components/ui/Toast', () => ({
+  useToast: jest.fn(() => jest.fn()),
+}));
+
+jest.mock('better-sqlite3', () => {
+  const Database = jest.fn(() => ({
+    prepare: jest.fn(() => ({
+      run: jest.fn(),
+      all: jest.fn(() => []), // Mock empty array for queries
+      get: jest.fn(() => undefined), // Mock undefined for single results
+    })),
+    transaction: jest.fn((fn) => fn()),
+    close: jest.fn(),
+  }));
+  return Database;
 });
 
-// Mock fetch globally for all tests
-Object.defineProperty(global, 'fetch', {
-  writable: true,
-  value: () => Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve({}),
-    text: () => Promise.resolve(''),
-  }),
-});
-
-// Simplified mocks - specific mocks should be in individual test files
+jest.mock('sqlite3', () => ({
+  verbose: jest.fn(),
+  Database: jest.fn(() => ({
+    run: jest.fn(),
+    get: jest.fn((sql, params, callback) => {
+      if (callback) callback(null, {});
+    }),
+    all: jest.fn((sql, params, callback) => {
+      if (callback) callback(null, []);
+    }),
+    close: jest.fn(),
+  })),
+}));

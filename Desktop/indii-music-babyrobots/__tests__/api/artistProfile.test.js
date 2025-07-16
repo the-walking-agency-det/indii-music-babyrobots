@@ -1,23 +1,25 @@
 import { jest } from '@jest/globals';
 import { faker } from '@faker-js/faker';
 
-// Define the mock functions first
-const mockCreateArtistProfile = jest.fn();
-const mockGetArtistProfileByUserId = jest.fn();
-const mockUpdateArtistProfile = jest.fn();
-const mockDeleteArtistProfile = jest.fn();
-
-// Then mock the module, returning these mock functions
+// Mock the database module before importing
 jest.mock('../../src/lib/db', () => ({
   __esModule: true,
-  createArtistProfile: mockCreateArtistProfile,
-  getArtistProfileByUserId: mockGetArtistProfileByUserId,
-  updateArtistProfile: mockUpdateArtistProfile,
-  deleteArtistProfile: mockDeleteArtistProfile,
+  createArtistProfile: jest.fn(),
+  getArtistProfileByUserId: jest.fn(),
+  updateArtistProfile: jest.fn(),
+  deleteArtistProfile: jest.fn(),
 }));
 
 // Now import the handler
 import handler from '../../pages/api/profile/artist';
+
+// Import the mocked functions
+import { 
+  createArtistProfile as mockCreateArtistProfile,
+  getArtistProfileByUserId as mockGetArtistProfileByUserId,
+  updateArtistProfile as mockUpdateArtistProfile,
+  deleteArtistProfile as mockDeleteArtistProfile
+} from '../../src/lib/db';
 
 describe('Artist Profile API', () => {
   let req;
@@ -42,11 +44,11 @@ describe('Artist Profile API', () => {
   it('should create an artist profile', async () => {
     req.method = 'POST';
     req.body = { ...req.body, stageName: 'Test Artist', legalName: 'John Doe' };
-    createArtistProfile.mockReturnValueOnce(101);
+    mockCreateArtistProfile.mockReturnValueOnce(101);
 
     await handler(req, res);
 
-    expect(createArtistProfile).toHaveBeenCalledWith(1, 'Test Artist', 'John Doe', undefined, undefined, undefined, undefined, null, undefined);
+    expect(mockCreateArtistProfile).toHaveBeenCalledWith(1, 'Test Artist', 'John Doe', undefined, undefined, undefined, undefined, undefined, undefined);
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ message: 'Artist profile created successfully!', profileId: 101 });
   });
@@ -65,11 +67,11 @@ describe('Artist Profile API', () => {
   it('should get an artist profile', async () => {
     req.method = 'GET';
     req.query.userId = 1; // Set userId in query for GET request
-    getArtistProfileByUserId.mockReturnValueOnce({ id: 101, stage_name: 'Fetched Artist' });
+    mockGetArtistProfileByUserId.mockReturnValueOnce({ id: 101, stage_name: 'Fetched Artist' });
 
     await handler(req, res);
 
-    expect(getArtistProfileByUserId).toHaveBeenCalledWith(1);
+    expect(mockGetArtistProfileByUserId).toHaveBeenCalledWith(1);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({ id: 101, stage_name: 'Fetched Artist' });
   });
@@ -77,7 +79,7 @@ describe('Artist Profile API', () => {
   it('should return 404 if artist profile not found on GET', async () => {
     req.method = 'GET';
     req.query.userId = 1; // Set userId in query for GET request
-    getArtistProfileByUserId.mockReturnValueOnce(null);
+    mockGetArtistProfileByUserId.mockReturnValueOnce(null);
 
     await handler(req, res);
 
@@ -89,11 +91,11 @@ describe('Artist Profile API', () => {
   it('should update an artist profile', async () => {
     req.method = 'PUT';
     req.body = { ...req.body, stageName: 'Updated Artist', bio: 'New Bio' };
-    updateArtistProfile.mockReturnValueOnce(1); // 1 change made
+    mockUpdateArtistProfile.mockReturnValueOnce(1); // 1 change made
 
     await handler(req, res);
 
-    expect(updateArtistProfile).toHaveBeenCalledWith(1, 'Updated Artist', undefined, 'New Bio', undefined, undefined, undefined, null, undefined);
+    expect(mockUpdateArtistProfile).toHaveBeenCalledWith(1, 'Updated Artist', undefined, 'New Bio', undefined, undefined, undefined, undefined, undefined);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({ message: 'Artist profile updated successfully!' });
   });

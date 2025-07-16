@@ -1,7 +1,11 @@
 import uuid
 import json
 import chromadb
+import os
 from typing import Any, Dict
+
+# Fix tokenizer parallelism warning
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 class MemoryHub:
     def __init__(self, persist_dir: str = "./chroma_db"):

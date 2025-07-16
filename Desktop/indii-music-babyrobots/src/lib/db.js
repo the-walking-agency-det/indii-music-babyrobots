@@ -1,5 +1,5 @@
 import Database from 'better-sqlite3';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 const db = new Database('./database.sqlite', { verbose: console.log });
 
@@ -117,6 +117,30 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_tracks_artist_id ON tracks (artist_id);
   CREATE INDEX IF NOT EXISTS idx_tasks_user_id ON tasks (user_id);
   CREATE INDEX IF NOT EXISTS idx_tasks_assigned_to ON tasks (assigned_to);
+
+  CREATE TABLE IF NOT EXISTS chat_sessions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    session_id TEXT UNIQUE NOT NULL,
+    role TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
+
+  CREATE TABLE IF NOT EXISTS chat_messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT NOT NULL,
+    message TEXT NOT NULL,
+    response TEXT NOT NULL,
+    role TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (session_id) REFERENCES chat_sessions(session_id) ON DELETE CASCADE
+  );
+
+  CREATE INDEX IF NOT EXISTS idx_chat_sessions_user_id ON chat_sessions (user_id);
+  CREATE INDEX IF NOT EXISTS idx_chat_sessions_session_id ON chat_sessions (session_id);
+  CREATE INDEX IF NOT EXISTS idx_chat_messages_session_id ON chat_messages (session_id);
 `);
 
 export const createUser = (email, password, role = 'artist') => {
@@ -316,6 +340,39 @@ export const updateTask = (id, updates) => {
 export const deleteTask = (id) => {
   const stmt = db.prepare('DELETE FROM tasks WHERE id = ?');
   const info = stmt.run(id);
+  return info.changes;
+};
+
+// Chat management functions
+export const createChatSession = ({ user_id, session_id, role }) => {
+  const stmt = db.prepare(
+    'INSERT INTO chat_sessions (user_id, session_id, role) VALUES (?, ?, ?)'
+  );
+  const info = stmt.run(user_id, session_id, role);
+  return info.lastInsertRowid;
+};
+
+export const getChatSession = (sessionId) => {
+  const stmt = db.prepare('SELECT * FROM chat_sessions WHERE session_id = ?');
+  return stmt.get(sessionId);
+};
+
+export const saveChatMessage = ({ session_id, message, response, role }) => {
+  const stmt = db.prepare(
+    'INSERT INTO chat_messages (session_id, message, response, role) VALUES (?, ?, ?, ?)'
+  );
+  const info = stmt.run(session_id, message, response, role);
+  return info.lastInsertRowid;
+};
+
+export const getChatHistory = (sessionId) => {
+  const stmt = db.prepare('SELECT * FROM chat_messages WHERE session_id = ? ORDER BY created_at ASC');
+  return stmt.all(sessionId);
+};
+
+export const deleteChatSession = (sessionId) => {
+  const stmt = db.prepare('DELETE FROM chat_sessions WHERE session_id = ?');
+  const info = stmt.run(sessionId);
   return info.changes;
 };
 

@@ -13,8 +13,38 @@ const ArtistProfileForm = ({ userId, onProfileSaved }) => {
   const [profileImageUrl, setProfileImageUrl] = useState('');
   
   const [isEditing, setIsEditing] = useState(false);
+  const [profileCompletion, setProfileCompletion] = useState(0);
+
+  const validateForm = () => {
+    if (!stageName.trim()) {
+      addToast('Stage name is required.', 'error');
+      return false;
+    }
+    // Add more validation rules as needed (e.g., for URLs, JSON)
+    return true;
+  };
+
+  useEffect(() => {
+    const calculateProfileCompletion = () => {
+      const fields = [
+        stageName,
+        legalName,
+        bio,
+        website,
+        proAffiliation,
+        ipiNumber,
+        socialLinks,
+        profileImageUrl,
+      ];
+      const filledFields = fields.filter(field => field && field.trim() !== '').length;
+      const completionPercentage = Math.round((filledFields / fields.length) * 100);
+      setProfileCompletion(completionPercentage);
+    };
+
+    calculateProfileCompletion();
+  }, [stageName, legalName, bio, website, proAffiliation, ipiNumber, socialLinks, profileImageUrl]);
   const [isLoading, setIsLoading] = useState(false);
-  const addToast = useToast();
+  const { addToast } = useToast();
 
   useEffect(() => {
     if (userId) {
@@ -54,15 +84,16 @@ const ArtistProfileForm = ({ userId, onProfileSaved }) => {
     } else {
       // No userId provided, start in create mode
       setIsEditing(false);
-      setMessage('Please provide a user ID to create or edit a profile.');
+      addToast('Please provide a user ID to create or edit a profile.', 'warning');
     }
-  }, [userId]);
+  }, [userId, addToast]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setMessage('');
 
-    if (!userId) {
+    if (!validateForm()) {
+      return;
+    }
       addToast('User ID is required to create or update a profile.', 'error');
       return;
     }
@@ -110,7 +141,7 @@ const ArtistProfileForm = ({ userId, onProfileSaved }) => {
 
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', maxWidth: '600px', margin: '20px auto' }}>
-      <h2>{isEditing ? 'Edit Artist Profile' : 'Create Artist Profile'}</h2>
+        <h2 className="text-2xl font-bold mb-4">{isEditing ? 'Edit Artist Profile' : 'Create Artist Profile'}</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '10px' }}>
           <label htmlFor="stageName" style={{ display: 'block', marginBottom: '5px' }}>Stage Name:</label>
@@ -148,6 +179,12 @@ const ArtistProfileForm = ({ userId, onProfileSaved }) => {
         <button type="submit" disabled={isLoading} style={{ width: '100%', padding: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
           {isLoading ? 'Saving...' : (isEditing ? 'Update Profile' : 'Create Profile')}
         </button>
+        <div style={{ marginTop: '20px' }}>
+          <h3 style={{ marginBottom: '10px' }}>Profile Completion: {profileCompletion}%</h3>
+          <div style={{ width: '100%', backgroundColor: '#e0e0e0', borderRadius: '5px' }}>
+            <div style={{ width: `${profileCompletion}%`, backgroundColor: '#007bff', height: '20px', borderRadius: '5px', transition: 'width 0.5s ease-in-out' }}></div>
+          </div>
+        </div>
       </form>
       
     </div>

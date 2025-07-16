@@ -4,6 +4,10 @@ import userEvent from '@testing-library/user-event';
 import ArtistProfileForm from '../../src/components/ArtistProfileForm';
 import { faker } from '@faker-js/faker';
 
+jest.mock('../../src/components/ui/Toast', () => ({
+  useToast: () => jest.fn(),
+}));
+
 // Mock the fetch API globally, but allow for specific overrides per test
 global.fetch = jest.fn();
 
@@ -35,21 +39,21 @@ describe('ArtistProfileForm', () => {
   });
 
   it('renders the edit profile form correctly when profile exists', async () => {
-    // Mock fetch to return an existing profile for the initial GET request
+    const mockProfile = {
+      id: 101,
+      stage_name: 'Existing Artist',
+      legal_name: faker.person.lastName(),
+      bio: faker.lorem.sentence(),
+      website: faker.internet.url(),
+      pro_affiliation: faker.company.name(),
+      ipi_number: faker.string.numeric(5),
+      social_links: JSON.stringify({ twitter: faker.internet.userName() }),
+      profile_image_url: faker.image.avatar(),
+    };
     fetch.mockImplementationOnce(() =>
       Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({
-          id: 101,
-          stage_name: faker.person.firstName(),
-          legal_name: faker.person.lastName(),
-          bio: faker.lorem.sentence(),
-          website: faker.internet.url(),
-          pro_affiliation: faker.company.name(),
-          ipi_number: faker.string.numeric(5),
-          social_links: JSON.stringify({ twitter: faker.internet.userName() }),
-          profile_image_url: faker.image.avatar(),
-        }),
+        json: () => Promise.resolve(mockProfile),
       })
     );
 
@@ -106,21 +110,21 @@ describe('ArtistProfileForm', () => {
   });
 
   it('handles profile update successfully', async () => {
-    // Mock fetch to return an existing profile for GET, then success for PUT
+    const mockProfile = {
+      id: 101,
+      stage_name: 'Existing Artist',
+      legal_name: faker.person.lastName(),
+      bio: faker.lorem.sentence(),
+      website: faker.internet.url(),
+      pro_affiliation: faker.company.name(),
+      ipi_number: faker.string.numeric(5),
+      social_links: JSON.stringify({ twitter: faker.internet.userName() }),
+      profile_image_url: faker.image.avatar(),
+    };
     fetch.mockImplementationOnce(() =>
       Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({
-          id: 101,
-          stage_name: faker.person.firstName(),
-          legal_name: faker.person.lastName(),
-          bio: faker.lorem.sentence(),
-          website: faker.internet.url(),
-          pro_affiliation: faker.company.name(),
-          ipi_number: faker.string.numeric(5),
-          social_links: JSON.stringify({ twitter: faker.internet.userName() }),
-          profile_image_url: faker.image.avatar(),
-        }),
+        json: () => Promise.resolve(mockProfile),
       })
     );
     fetch.mockImplementationOnce(() => Promise.resolve({ ok: true, json: () => Promise.resolve({ message: 'Artist profile updated successfully!' }) }));
