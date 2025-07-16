@@ -64,9 +64,21 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return {
       props: {
         profiles: {
-          artists,
-          fans,
-          serviceProviders
+          artists: artists.map((artist) => ({
+            ...artist,
+            createdAt: artist.createdAt.toISOString(),
+            updatedAt: artist.updatedAt.toISOString(),
+          })),
+          fans: fans.map((fan) => ({
+            ...fan,
+            createdAt: fan.createdAt.toISOString(),
+            updatedAt: fan.updatedAt.toISOString(),
+          })),
+          serviceProviders: serviceProviders.map((provider) => ({
+            ...provider,
+            createdAt: provider.createdAt.toISOString(),
+            updatedAt: provider.updatedAt.toISOString(),
+          }))
         }
       }
     };

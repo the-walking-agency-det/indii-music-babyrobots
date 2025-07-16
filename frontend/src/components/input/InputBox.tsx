@@ -1,5 +1,5 @@
 import React, { useState, useRef, KeyboardEvent } from 'react';
-import './InputBox.css';
+import styles from './InputBox.module.css';
 
 interface InputBoxProps {
   onSubmit: (value: string) => void;
@@ -53,7 +53,7 @@ export const InputBox: React.FC<InputBoxProps> = ({
   };
 
   return (
-    <div data-testid="input-box" className={`input-box ${className}`}>
+    <div data-testid="input-box" className={`${styles['input-box']} ${className}`}>
       <textarea
         ref={inputRef}
         value={inputValue}
@@ -61,16 +61,16 @@ export const InputBox: React.FC<InputBoxProps> = ({
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         rows={1}
-        className="input-box__textarea"
+        className={styles['input-box__textarea']}
       />
-      <div className="input-box__controls">
-        <span className="input-box__counter">
+      <div className={styles['input-box__controls']}>
+        <span className={styles['input-box__counter']}>
           {inputValue.length}/{maxLength}
         </span>
         <button
           onClick={handleSubmit}
           disabled={!inputValue.trim()}
-          className="input-box__submit"
+          className={styles['input-box__submit']}
         >
           Send
         </button>

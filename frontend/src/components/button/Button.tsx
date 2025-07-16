@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css';
+import styles from './Button.module.css';
 
 interface ButtonProps {
   onClick?: () => void;
@@ -20,11 +20,11 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   children,
 }) => {
-  const baseClass = 'btn';
+  const baseClass = styles.btn;
   const classes = [
     baseClass,
-    `${baseClass}--${variant}`,
-    `${baseClass}--${size}`,
+    styles[`btn--${variant}`],
+    styles[`btn--${size}`],
     className,
   ].join(' ');
 
