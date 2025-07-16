@@ -6,7 +6,7 @@ Working on Core API Development and Deployment Pipeline Setup following our meth
 "Make it, Break it, Fix it, Test it!"
 
 ## 1. Core API Development [IN PROGRESS]
-- [ ] Implement basic CRUD operations for music tracks
+- [x] Implement basic CRUD operations for music tracks
 - [ ] Add user authentication and authorization
 - [ ] Create endpoints for playlist management
 - [ ] Add music metadata handling
@@ -18,7 +18,7 @@ Working on Core API Development and Deployment Pipeline Setup following our meth
 - [ ] Add test coverage reporting
 
 ## 3. Deployment Pipeline Setup [IN PROGRESS]
-- [ ] Configure Docker containerization
+- [x] Configure Docker containerization
 - [ ] Set up staging environment
 - [ ] Implement automated deployment to cloud platform
 - [ ] Add monitoring and logging
