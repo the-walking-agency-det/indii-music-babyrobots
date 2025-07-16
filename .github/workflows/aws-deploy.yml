@@ -1,0 +1,81 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main  # Production deployment
+      - develop  # Staging deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.login-ecr.outputs.registry }}/indiimusic-api:${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.5.0
+
+    - name: Terraform Init
+      working-directory: ./terraform
+      run: terraform init
+
+    - name: Terraform Plan
+      working-directory: ./terraform
+      env:
+        TF_VAR_image_tag: ${{ github.sha }}
+        TF_VAR_environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+        TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
+        TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
+      run: terraform plan -out=tfplan
+
+    - name: Terraform Apply
+      working-directory: ./terraform
+      run: terraform apply -auto-approve tfplan
+
+    - name: Update ECS Service
+      run: |
+        aws ecs update-service --cluster indiimusic-${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }} \
+                              --service api \
+                              --force-new-deployment
+
+    - name: Health Check
+      run: |
+        HEALTH_URL=${{ github.ref == 'refs/heads/main' && 'https://api.indiimusic.com/health' || 'https://staging.indiimusic.com/health' }}
+        for i in {1..30}; do
+          response=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_URL)
+          if [ $response -eq 200 ]; then
+            echo "Health check passed"
+            exit 0
+          fi
+          echo "Waiting for service to be healthy..."
+          sleep 10
+        done
+        echo "Health check failed"
+        exit 1
