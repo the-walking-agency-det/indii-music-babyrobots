@@ -8,14 +8,14 @@ Working on Core API Development and Deployment Pipeline Setup following our meth
 ## 1. Core API Development [IN PROGRESS]
 - [x] Implement basic CRUD operations for music tracks
 - [x] Add user authentication and authorization
-- [ ] Create endpoints for playlist management
-- [ ] Add music metadata handling
+- [x] Create endpoints for playlist management
+- [x] Add music metadata handling
 
 ## 2. Test Suite Implementation
 - [x] Set up pytest fixtures and configurations
 - [x] Write unit tests for core API functions
 - [x] Create integration tests for endpoints
-- [ ] Add test coverage reporting
+- [x] Add test coverage reporting
 
 ## 3. Deployment Pipeline Setup [IN PROGRESS]
 - [x] Configure Docker containerization
