@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import track_router
+from routers import track_router, auth_router
 
 app = FastAPI(title="Indii Music BabyRobots")
 
 # Include routers
+app.include_router(auth_router.router)
 app.include_router(track_router.router)
 
 app.add_middleware(
