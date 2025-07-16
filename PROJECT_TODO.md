@@ -19,7 +19,7 @@ Working on Core API Development and Deployment Pipeline Setup following our meth
 
 ## 3. Deployment Pipeline Setup [IN PROGRESS]
 - [x] Configure Docker containerization
-- [ ] Set up staging environment
+- [x] Set up staging environment
 - [ ] Implement automated deployment to cloud platform
 - [ ] Add monitoring and logging
 
