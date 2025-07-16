@@ -45,8 +45,20 @@ export default function Home() {
         <p className="text-xl text-purple-200 mb-8">AI-Powered Music Industry Platform</p>
         <div className="space-x-4">
           <button 
-            onClick={() => router.push('/login')}
+            onClick={() => router.push('/profile-forms')}
             className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+          >
+            Create Profiles
+          </button>
+          <button 
+            onClick={() => router.push('/profiles')}
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+          >
+            View Profiles
+          </button>
+          <button 
+            onClick={() => router.push('/login')}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
           >
             Sign In
           </button>
