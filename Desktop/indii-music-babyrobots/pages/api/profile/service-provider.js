@@ -1,7 +1,4 @@
-import { initializeDatabase, db } from '../../../lib/db.js';
-
-// Initialize database
-initializeDatabase();
+import { db } from '../../../lib/db.js';
 
 export default async function handler(req, res) {
   const { method } = req;
