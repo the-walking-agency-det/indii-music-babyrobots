@@ -14,6 +14,10 @@
 
 ## Testing Tasks
 - [X] Verify test suite covers rendering, input updates, and submission.
+- [X] Update components to use CSS modules.
+  - Converted InputBox and Button to use CSS modules
+  - Updated tests to handle CSS module class names
+  - Added CSS module mocking for tests
 - [ ] Expand test cases for edge situations like rapid input changes.
 - [ ] Conduct UI/UX review with design stakeholders for final approval.
 - [ ] Run accessibility tests to confirm compliance with WCAG standards.
