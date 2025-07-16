@@ -1,0 +1,309 @@
+openapi: 3.0.0
+paths:
+  /api/tracks:
+    get:
+      tags:
+        - Tracks
+      summary: Get all tracks
+      description: Retrieve a list of all music tracks
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+          description: Page number for pagination
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 20
+          description: Number of items per page
+        - in: query
+          name: genre
+          schema:
+            type: string
+          description: Filter tracks by genre
+      responses:
+        '200':
+          description: List of tracks retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  data:
+                    type: object
+                    properties:
+                      tracks:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Track'
+                      pagination:
+                        type: object
+                        properties:
+                          currentPage:
+                            type: integer
+                            example: 1
+                          totalPages:
+                            type: integer
+                            example: 5
+                          totalItems:
+                            type: integer
+                            example: 100
+    post:
+      tags:
+        - Tracks
+      summary: Create a new track
+      description: Add a new music track to the system
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - artist
+                - duration
+                - genre
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  example: "Starlight"
+                artist:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  example: "John Smith"
+                duration:
+                  type: integer
+                  minimum: 1
+                  example: 180
+                genre:
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  example: "Rock"
+                releaseYear:
+                  type: integer
+                  minimum: 1900
+                  maximum: 2025
+                  example: 2023
+      responses:
+        '201':
+          description: Track created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Track created successfully"
+                  data:
+                    $ref: '#/components/schemas/Track'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/tracks/{id}:
+    get:
+      tags:
+        - Tracks
+      summary: Get a specific track
+      description: Retrieve details of a specific track by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Track ID
+      responses:
+        '200':
+          description: Track details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  data:
+                    $ref: '#/components/schemas/Track'
+        '404':
+          description: Track not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - Tracks
+      summary: Update a track
+      description: Update details of an existing track
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Track ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                artist:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                duration:
+                  type: integer
+                  minimum: 1
+                genre:
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                releaseYear:
+                  type: integer
+                  minimum: 1900
+                  maximum: 2025
+      responses:
+        '200':
+          description: Track updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Track updated successfully"
+                  data:
+                    $ref: '#/components/schemas/Track'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Track not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      tags:
+        - Tracks
+      summary: Delete a track
+      description: Remove a track from the system
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Track ID
+      responses:
+        '200':
+          description: Track deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Track deleted successfully"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Track not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "507f1f77bcf86cd799439011"
+        title:
+          type: string
+          example: "Starlight"
+        artist:
+          type: string
+          example: "John Smith"
+        duration:
+          type: integer
+          example: 180
+        genre:
+          type: string
+          example: "Rock"
+        releaseYear:
+          type: integer
+          example: 2023
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import track_router, auth_router, playlist_router, metadata_router, health_router, metrics_router
+from routers import track_router, auth_router, playlist_router, metadata_router, health_router, metrics_router, dev_progress_router
 from utils.logging import LoggingMiddleware, RequestContextMiddleware
 from utils.metrics import metrics_middleware
 
@@ -18,6 +18,7 @@ app.include_router(auth_router.router)
 app.include_router(track_router.router)
 app.include_router(playlist_router.router)
 app.include_router(metadata_router.router)
+app.include_router(dev_progress_router.router)
 
 app.add_middleware(
     CORSMiddleware,

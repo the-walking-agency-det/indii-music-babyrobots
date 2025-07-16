@@ -15,6 +15,7 @@ import {
   AudioLevelMeter
 } from '../ui/AudioComponents';
 import { RoyaltyWidget, RecentActivityWidget } from './DashboardWidgets';
+import DevStatusWidget from './DevStatusWidget';
 import { 
   AIAgentCard, 
   AIChatInterface, 
@@ -374,7 +375,11 @@ const IndiiMusicDashboard = ({ userRole = 'artist', userId, currentUser, onRoleC
             </div>
 
             {/* Main content grid */}
-            <div className="uk-grid-match uk-child-width-1-2@l uk-margin-large-top" uk-grid="true">
+          <div className="uk-margin-large-bottom">
+            <DevStatusWidget />
+          </div>
+
+          <div className="uk-grid-match uk-child-width-1-2@l uk-margin-large-top" uk-grid="true">
               {/* Recent tracks */}
               <div>
                 <Card className="uk-card-body uk-theme-zinc dark">

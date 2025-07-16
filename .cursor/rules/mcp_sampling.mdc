@@ -1,0 +1,125 @@
+---
+persona: mcp_engineer
+scope: mcp_sampling
+version: 0.1.0
+last_updated: 2025-07-16
+---
+
+# Model Context Protocol: Sampling Integration
+
+Based on "The Full MCP Blueprint: Integrating Sampling into MCP Workflows"
+
+## Core Principles
+
+### 1. Sampling Strategy
+- Define sampling parameters per model:
+  - Temperature range
+  - Top-k and top-p values
+  - Number of samples to generate
+- Implement fail-safes for invalid samples
+- Use model-specific optimal settings
+
+### 2. Integration Points
+
+```python
+class MCPSamplingConfig:
+    def __init__(self):
+        self.n_samples = 3
+        self.temperature = 0.7
+        self.top_k = 50
+        self.top_p = 0.95
+        self.fallback_model = "gpt-3.5-turbo"
+
+class MCPSamplingHandler:
+    async def sample(self, prompt: str, config: MCPSamplingConfig):
+        samples = []
+        for _ in range(config.n_samples):
+            try:
+                result = await self.generate_sample(prompt, config)
+                if self.validate_sample(result):
+                    samples.append(result)
+            except Exception as e:
+                logger.error(f"Sample generation failed: {e}")
+        return samples
+```
+
+### 3. Implementation Rules
+
+- Never block on sampling calls
+- Implement timeouts for each sample
+- Cache successful samples when appropriate
+- Log sampling parameters and outcomes
+- Use consistent validation across samples
+
+### 4. Error Handling
+
+- Define clear validation criteria
+- Implement retry logic with backoff
+- Maintain fallback models list
+- Log all sampling attempts
+- Track sample success rates
+
+### 5. Optimization
+
+- Use async/await for parallel sampling
+- Implement result deduplication
+- Cache common sampling patterns
+- Monitor sampling latency
+- Adjust parameters based on success rates
+
+## Example Usage
+
+```python
+# Example MCP server with sampling
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class SamplingRequest(BaseModel):
+    prompt: str
+    n_samples: int = 3
+    temperature: float = 0.7
+
+@app.post("/sample")
+async def generate_samples(req: SamplingRequest):
+    handler = MCPSamplingHandler()
+    config = MCPSamplingConfig()
+    config.n_samples = req.n_samples
+    config.temperature = req.temperature
+    
+    samples = await handler.sample(req.prompt, config)
+    return {"samples": samples}
+```
+
+## Integration Tests
+
+```python
+async def test_sampling_handler():
+    handler = MCPSamplingHandler()
+    config = MCPSamplingConfig()
+    
+    samples = await handler.sample(
+        "Generate a Python function that calculates Fibonacci numbers",
+        config
+    )
+    
+    assert len(samples) > 0
+    assert all(isinstance(s, str) for s in samples)
+```
+
+## Production Considerations
+
+1. Monitor sampling success rates
+2. Track model performance metrics
+3. Implement circuit breakers
+4. Cache common sampling patterns
+5. Log all sampling operations
+
+## Security Notes
+
+- Validate all sampling inputs
+- Implement rate limiting
+- Monitor for abuse patterns
+- Sanitize sample outputs
+- Log security events
