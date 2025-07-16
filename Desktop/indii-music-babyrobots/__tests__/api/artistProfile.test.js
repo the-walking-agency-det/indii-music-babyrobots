@@ -48,7 +48,7 @@ describe('Artist Profile API', () => {
 
     await handler(req, res);
 
-    expect(mockCreateArtistProfile).toHaveBeenCalledWith(1, 'Test Artist', 'John Doe', undefined, undefined, undefined, undefined, null, undefined);
+    expect(mockCreateArtistProfile).toHaveBeenCalledWith(1, 'Test Artist', 'John Doe', undefined, undefined, undefined, undefined, undefined, undefined);
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ message: 'Artist profile created successfully!', profileId: 101 });
   });
@@ -95,7 +95,7 @@ describe('Artist Profile API', () => {
 
     await handler(req, res);
 
-    expect(mockUpdateArtistProfile).toHaveBeenCalledWith(1, 'Updated Artist', undefined, 'New Bio', undefined, undefined, undefined, null, undefined);
+    expect(mockUpdateArtistProfile).toHaveBeenCalledWith(1, 'Updated Artist', undefined, 'New Bio', undefined, undefined, undefined, undefined, undefined);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({ message: 'Artist profile updated successfully!' });
   });

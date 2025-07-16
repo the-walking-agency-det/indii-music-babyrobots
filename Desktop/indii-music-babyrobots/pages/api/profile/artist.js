@@ -81,7 +81,6 @@ async function handleUpdateArtistProfile(req, res, userId) {
   
   try {
     const changes = updateArtistProfile(
-      userId,
       stageName,
       legalName,
       bio,
@@ -89,7 +88,8 @@ async function handleUpdateArtistProfile(req, res, userId) {
       proAffiliation,
       ipiNumber,
       socialLinks,
-      profileImageUrl
+      profileImageUrl,
+      userId
     );
     
     if (changes === 0) {

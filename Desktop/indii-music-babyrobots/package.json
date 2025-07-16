@@ -7,7 +7,7 @@
     "dev": "next dev -p 9000",
     "build": "next build",
     "start": "next start",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "jest",
     "db:setup": "node scripts/setup-database.js",
     "db:init": "node scripts/init-database.js",
     "db:migrate": "prisma migrate dev",
@@ -61,6 +61,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@faker-js/faker": "^9.9.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
