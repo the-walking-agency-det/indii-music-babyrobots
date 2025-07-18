@@ -3,9 +3,9 @@ from fastapi.security import OAuth2PasswordRequestForm
 from datetime import timedelta
 from typing import Annotated
 
-from models.user import UserCreate, UserResponse
-from services.user_service import UserService
-from utils.auth import (
+from ..models.user import UserCreate, UserResponse
+from ..services.user_service import UserService
+from ..utils.auth import (
     verify_password,
     create_access_token,
     get_current_active_user,

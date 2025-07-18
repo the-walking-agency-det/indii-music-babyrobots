@@ -1,8 +1,8 @@
 from typing import Optional, List
 from uuid import UUID
 from datetime import datetime
-from models.user import User, UserCreate, UserResponse
-from utils.auth import get_password_hash
+from ..models.user import User, UserCreate, UserResponse
+from ..utils.auth import get_password_hash
 
 # Temporary in-memory storage
 users_db: dict[UUID, User] = {}

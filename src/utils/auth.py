@@ -6,8 +6,8 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from uuid import UUID
 
-from models.user import User, UserResponse
-from services.user_service import UserService
+from ..models.user import User, UserResponse
+from .interfaces import user_service
 
 # Constants
 SECRET_KEY = "your-secret-key"  # TODO: Move to environment variables
@@ -48,7 +48,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserResponse:
     except JWTError:
         raise credentials_exception
     
-    user = await UserService.get_user(UUID(user_id))
+    user = await user_service.get_user(UUID(user_id))
     if user is None:
         raise credentials_exception
     return user

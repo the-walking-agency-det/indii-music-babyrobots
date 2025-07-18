@@ -1,9 +1,18 @@
-import Database from 'better-sqlite3';
+import sqlite3 from 'sqlite3';
 import bcrypt from 'bcryptjs';
 
-const db = new Database('./database.sqlite', { verbose: console.log });
-
-db.pragma('journal_mode = WAL');
+const db = new sqlite3.Database(':memory:', (err) => {
+  if (err) {
+    console.error('Error opening database:', err);
+  } else {
+    console.log('Connected to in-memory database');
+    db.serialize(() => {
+      db.run('PRAGMA journal_mode = WAL');
+      db.run('PRAGMA busy_timeout = 5000');
+      db.run('PRAGMA synchronous = OFF');
+    });
+  }
+});
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
@@ -145,14 +154,24 @@ db.exec(`
 
 export const createUser = (email, password, role = 'artist') => {
   const hashedPassword = bcrypt.hashSync(password, 10);
-  const stmt = db.prepare('INSERT INTO users (email, password, role) VALUES (?, ?, ?)');
-  const info = stmt.run(email, hashedPassword, role);
-  return info.lastInsertRowid;
+  return new Promise((resolve, reject) => {
+    db.run('INSERT INTO users (email, password, role) VALUES (?, ?, ?)',
+      [email, hashedPassword, role],
+      function(err) {
+        if (err) reject(err);
+        resolve(this.lastID);
+      }
+    );
+  });
 };
 
 export const getUserByEmail = (email) => {
-  const stmt = db.prepare('SELECT * FROM users WHERE email = ?');
-  return stmt.get(email);
+  return new Promise((resolve, reject) => {
+    db.get('SELECT * FROM users WHERE email = ?', [email], (err, row) => {
+      if (err) reject(err);
+      resolve(row);
+    });
+  });
 };
 
 export const verifyPassword = (password, hashedPassword) => {
@@ -301,13 +320,21 @@ export const getTracksByArtistId = (artistId) => {
 
 // Generic query and run functions for more flexible database operations
 export const query = (sql, params = []) => {
-  const stmt = db.prepare(sql);
-  return stmt.all(...params);
+  return new Promise((resolve, reject) => {
+    db.all(sql, params, (err, rows) => {
+      if (err) reject(err);
+      resolve(rows);
+    });
+  });
 };
 
 export const run = (sql, params = []) => {
-  const stmt = db.prepare(sql);
-  return stmt.run(...params);
+  return new Promise((resolve, reject) => {
+    db.run(sql, params, function(err) {
+      if (err) reject(err);
+      resolve({ lastID: this.lastID, changes: this.changes });
+    });
+  });
 };
 
 // Task management functions
@@ -345,16 +372,29 @@ export const deleteTask = (id) => {
 
 // Chat management functions
 export const createChatSession = ({ user_id, session_id, role }) => {
-  const stmt = db.prepare(
-    'INSERT INTO chat_sessions (user_id, session_id, role) VALUES (?, ?, ?)'
-  );
-  const info = stmt.run(user_id, session_id, role);
-  return info.lastInsertRowid;
+  return new Promise((resolve, reject) => {
+    db.run(
+      'INSERT INTO chat_sessions (user_id, session_id, role) VALUES (?, ?, ?)',
+      [user_id, session_id, role],
+      function(err) {
+        if (err) reject(err);
+        resolve(this.lastID);
+      }
+    );
+  });
 };
 
 export const getChatSession = (sessionId) => {
-  const stmt = db.prepare('SELECT * FROM chat_sessions WHERE session_id = ?');
-  return stmt.get(sessionId);
+  return new Promise((resolve, reject) => {
+    db.get(
+      'SELECT * FROM chat_sessions WHERE session_id = ?',
+      [sessionId],
+      (err, row) => {
+        if (err) reject(err);
+        resolve(row);
+      }
+    );
+  });
 };
 
 export const saveChatMessage = ({ session_id, message, response, role }) => {
@@ -366,8 +406,16 @@ export const saveChatMessage = ({ session_id, message, response, role }) => {
 };
 
 export const getChatHistory = (sessionId) => {
-  const stmt = db.prepare('SELECT * FROM chat_messages WHERE session_id = ? ORDER BY created_at ASC');
-  return stmt.all(sessionId);
+  return new Promise((resolve, reject) => {
+    db.all(
+      'SELECT * FROM chat_messages WHERE session_id = ? ORDER BY created_at ASC',
+      [sessionId],
+      (err, rows) => {
+        if (err) reject(err);
+        resolve(rows);
+      }
+    );
+  });
 };
 
 export const deleteChatSession = (sessionId) => {

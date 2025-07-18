@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { TreeRingsMemory } from '../memory/tree-rings';
 import { EventEmitter } from 'events';
+import { AgentMemoryManager } from '../memory/agent-memory';
 
 export interface AgentConfig {
   name: string;
@@ -39,17 +39,17 @@ export abstract class BaseAgent extends EventEmitter {
   protected type: string;
   protected capabilities: string[];
   protected config: Record<string, any>;
-  protected memory: TreeRingsMemory;
+  protected memory: AgentMemoryManager;
   protected prisma: PrismaClient;
   protected active: boolean = false;
 
-  constructor(config: AgentConfig) {
+constructor(config: AgentConfig, memory?: Memory) {
     super();
     this.name = config.name;
     this.type = config.type;
     this.capabilities = config.capabilities;
     this.config = config.configuration;
-    this.memory = new TreeRingsMemory();
+    this.memory = memory || new AgentMemoryManager(this.name);
     this.prisma = new PrismaClient();
   }
 
@@ -57,6 +57,8 @@ export abstract class BaseAgent extends EventEmitter {
    * Initialize the agent
    */
   async initialize(): Promise<void> {
+    // Try to learn from previous experiences during initialization
+    await this.learnFromExperience();
     // Register agent in database
     await this.prisma.agent.upsert({
       where: { name: this.name },
@@ -211,6 +213,75 @@ export abstract class BaseAgent extends EventEmitter {
    */
   protected async handleCustomMessage(message: AgentMessage): Promise<void> {
     // Implementation depends on agent type
+  }
+
+  /**
+   * Learn from past experiences
+   */
+  protected async learnFromExperience(): Promise<void> {
+    try {
+      await this.memory.learn();
+      
+      // Get the most relevant learned patterns
+      const patterns = await this.memory.searchMemories('learned_pattern', 5);
+      
+      // Apply learned patterns to current configuration
+      if (patterns.length > 0) {
+        const updates: Record<string, any> = {};
+        
+        // Analyze patterns and update configuration accordingly
+        for (const pattern of patterns) {
+          if (pattern.content?.patterns) {
+            // Apply pattern-specific updates to configuration
+            // This is a simple example - expand based on your needs
+            Object.assign(updates, this.applyPatternToConfig(pattern.content.patterns));
+          }
+        }
+        
+        // Update agent configuration with learned improvements
+        if (Object.keys(updates).length > 0) {
+          await this.updateConfig(updates);
+        }
+      }
+    } catch (error) {
+      // Log error but don't fail initialization
+      console.error('Error during learning:', error);
+    }
+  }
+
+  /**
+   * Apply learned patterns to agent configuration
+   */
+  protected applyPatternToConfig(patterns: any[]): Record<string, any> {
+    const updates: Record<string, any> = {};
+    
+    // Example pattern application logic
+    // Customize this based on your specific needs
+    for (const pattern of patterns) {
+      if (pattern.type === 'performance_improvement') {
+        updates[pattern.parameter] = pattern.optimizedValue;
+      }
+      else if (pattern.type === 'error_prevention') {
+        updates[`validation.${pattern.condition}`] = pattern.threshold;
+      }
+      // Add more pattern types as needed
+    }
+    
+    return updates;
+  }
+
+  /**
+   * Search agent's memories
+   */
+  async searchMemories(query: string, limit: number = 5): Promise<any[]> {
+    return this.memory.searchMemories(query, limit);
+  }
+
+  /**
+   * Get recent memories
+   */
+  async getRecentMemories(tags?: string[]): Promise<any[]> {
+    return this.memory.getRecentMemories(tags);
   }
 
   /**

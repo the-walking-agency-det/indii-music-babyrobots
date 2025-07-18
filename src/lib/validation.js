@@ -14,34 +14,93 @@ export const isStrongPassword = (password) => {
   return strongRegex.test(password);
 };
 
+export const isValidUrl = (url) => {
+  try {
+    const parsedUrl = new URL(url);
+    // Check for common protocols
+    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+      return false;
+    }
+    // Ensure there's a host
+    if (!parsedUrl.host) {
+      return false;
+    }
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
 export const validateProfileData = (role, profile) => {
+  const errors = [];
+  
+  // Common validations for all profiles
+  if (!profile.email || !isValidEmail(profile.email)) {
+    errors.push('A valid email address is required.');
+  }
+
+  if (profile.website && !isValidUrl(profile.website)) {
+    errors.push('Website URL must be valid.');
+  }
+
+  // Role-specific validations
   switch (role) {
     case 'artist':
-      if (!profile.stageName) {
-        return { isValid: false, message: 'Artist profile requires a stage name.' };
+      if (!profile.stageName?.trim()) {
+        errors.push('Artist profile requires a stage name.');
       }
-      // Add more artist-specific validations here
+      if (!profile.genres || profile.genres.length === 0) {
+        errors.push('At least one genre must be selected.');
+      }
+      if (profile.socialLinks) {
+        Object.entries(profile.socialLinks).forEach(([platform, url]) => {
+          if (url && !isValidUrl(url)) {
+            errors.push(`Invalid ${platform} URL provided.`);
+          }
+        });
+      }
       break;
+
     case 'fan':
-      if (!profile.displayName) {
-        return { isValid: false, message: 'Fan profile requires a display name.' };
+      if (!profile.displayName?.trim()) {
+        errors.push('Fan profile requires a display name.');
       }
-      // Add more fan-specific validations here
+      if (profile.favoriteGenres && profile.favoriteGenres.length === 0) {
+        errors.push('Please select at least one favorite genre.');
+      }
       break;
+
     case 'licensor':
-      if (!profile.companyName) {
-        return { isValid: false, message: 'Licensor profile requires a company name.' };
+      if (!profile.companyName?.trim()) {
+        errors.push('Licensor profile requires a company name.');
       }
-      // Add more licensor-specific validations here
+      if (!profile.businessEmail || !isValidEmail(profile.businessEmail)) {
+        errors.push('A valid business email is required.');
+      }
+      if (!profile.licenseTypes || profile.licenseTypes.length === 0) {
+        errors.push('Please select at least one license type.');
+      }
       break;
+
     case 'service_provider':
-      if (!profile.businessName) {
-        return { isValid: false, message: 'Service Provider profile requires a business name.' };
+      if (!profile.businessName?.trim()) {
+        errors.push('Service Provider profile requires a business name.');
       }
-      // Add more service provider-specific validations here
+      if (!profile.services || profile.services.length === 0) {
+        errors.push('Please select at least one service you provide.');
+      }
+      if (!profile.businessEmail || !isValidEmail(profile.businessEmail)) {
+        errors.push('A valid business email is required.');
+      }
       break;
+
     default:
-      return { isValid: true };
+      return { isValid: false, message: 'Invalid profile type.' };
   }
-  return { isValid: true };
+
+  return {
+    isValid: errors.length === 0,
+    message: errors.join(' '),
+    errors: errors // Include full error array for detailed feedback
+  };
 };

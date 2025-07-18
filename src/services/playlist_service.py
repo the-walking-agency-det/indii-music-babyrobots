@@ -2,8 +2,8 @@ from typing import List, Optional
 from uuid import UUID
 from datetime import datetime
 
-from models.playlist import Playlist, PlaylistCreate, PlaylistUpdate
-from services.track_service import TrackService
+from ..models.playlist import Playlist, PlaylistCreate, PlaylistUpdate
+from .track_service import TrackService
 
 # Temporary in-memory storage
 playlists_db: dict[UUID, Playlist] = {}

@@ -18,7 +18,8 @@ export class MemoryManager {
     // Tree Ring Architecture - Outer Layer
     this.crash = new CrashMemory({
       database: options.database,
-      vectorSearch: options.enableVectorSearch || false
+      vectorSearch: options.enableVectorSearch || false,
+      apiKey: options.apiKey || process.env.GEMINI_API_KEY // Pass the API key here
     });
     
     // Tree Ring Architecture - Processing Layer

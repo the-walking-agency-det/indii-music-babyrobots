@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Annotated
 
-from models.metadata import MusicMetadata
-from models.user import UserResponse
-from services.metadata_service import MetadataService
-from services.track_service import TrackService
-from utils.auth import get_current_active_user
+from ..models.metadata import MusicMetadata
+from ..models.user import UserResponse
+from ..services.metadata_service import MetadataService
+from ..services.track_service import TrackService
+from ..utils.auth import get_current_active_user
 
 router = APIRouter(prefix="/metadata", tags=["metadata"])
 

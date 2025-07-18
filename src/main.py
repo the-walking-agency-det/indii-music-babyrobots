@@ -1,10 +1,27 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import track_router, auth_router, playlist_router, metadata_router, health_router, metrics_router, dev_progress_router
-from utils.logging import LoggingMiddleware, RequestContextMiddleware
-from utils.metrics import metrics_middleware
+from .services.user_service import UserService
+from .utils.interfaces import set_user_service
+
+# Import routers
+from .routers import (
+    track_router,
+    auth_router,
+    playlist_router,
+    metadata_router,
+    health_router,
+    metrics_router,
+    dev_progress_router
+)
+
+# Import middleware
+from .utils.logging import LoggingMiddleware, RequestContextMiddleware
+from .utils.metrics import metrics_middleware
 
 app = FastAPI(title="Indii Music BabyRobots")
+
+# Initialize services
+set_user_service(UserService)
 
 # Add middleware
 app.add_middleware(RequestContextMiddleware)

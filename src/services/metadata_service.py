@@ -4,7 +4,7 @@ from mutagen.easyid3 import EasyID3
 from mutagen.mp3 import MP3
 from pathlib import Path
 
-from models.metadata import MusicMetadata, AudioMetadata
+from ..models.metadata import MusicMetadata, AudioMetadata
 
 class MetadataService:
     @staticmethod

@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { TreeRingsMemory } from '../memory/tree-rings';
 import { SemanticChunker } from '../memory/semantic-chunker';
 import { encode } from 'gpt-3-encoder';
+import { randomUUID } from 'node:crypto';
 
 interface VectorDocument {
   id: string;
@@ -17,7 +18,7 @@ interface SearchResult {
 }
 
 export class VectorStore {
-  private static instance: VectorStore;
+  private static _instance: VectorStore | null = null;
   private prisma: PrismaClient;
   private memory: TreeRingsMemory;
   private chunker: SemanticChunker;
@@ -29,10 +30,14 @@ export class VectorStore {
   }
 
   public static getInstance(): VectorStore {
-    if (!VectorStore.instance) {
-      VectorStore.instance = new VectorStore();
+    if (!VectorStore._instance) {
+      VectorStore._instance = new VectorStore();
     }
-    return VectorStore.instance;
+    return VectorStore._instance;
+  }
+
+  public static tearDown(): void {
+    VectorStore._instance = null;
   }
 
   /**
@@ -46,7 +51,7 @@ export class VectorStore {
     const embeddedChunks = await this.embedChunks(chunks);
 
     // Store chunks with embeddings
-    const documentId = crypto.randomUUID();
+    const documentId = randomUUID();
     await Promise.all(embeddedChunks.map(async (chunk, index) => {
       const vectorDoc: VectorDocument = {
         id: `${documentId}_${index}`,

@@ -1,5 +1,9 @@
-import { PrismaClient } from '@prisma/client';
-import { SemanticChunker } from './semantic-chunker';
+import { DatabaseAdapter } from '../db-adapter';
+
+interface TreeRingsOptions {
+  adapter: DatabaseAdapter;
+  timeWindow?: number;
+}
 
 export interface MemoryRing {
   id: string;
@@ -23,23 +27,94 @@ export interface MemoryQuery {
   limit?: number;
 }
 
-export class TreeRingsMemory {
-  private prisma: PrismaClient;
-  private chunker: SemanticChunker;
-  private rings: Map<number, MemoryRing[]>;
+export class TreeRings {
+  private adapter: DatabaseAdapter;
+  private timeWindow: number;
 
-  constructor() {
-    this.prisma = new PrismaClient();
-    this.chunker = new SemanticChunker();
-    this.rings = new Map();
+  constructor(options: TreeRingsOptions) {
+    this.adapter = options.adapter;
+    this.timeWindow = options.timeWindow || 24 * 60 * 60 * 1000; // Default 24 hours
+    this.ensureTablesExist().catch(err => {
+      console.error('Failed to create tables:', err);
+    });
   }
 
   /**
    * Stores a new memory in the appropriate ring
    */
+async add(memory: any): Promise<void> {
+    const timestamp = memory.timestamp || new Date();
+    await this.adapter.run(
+      'INSERT INTO memories (id, content, importance, tags, timestamp) VALUES (?, ?, ?, ?, ?)',
+      [memory.id, memory.content, memory.importance, JSON.stringify(memory.tags), timestamp.toISOString()]
+    );
+  }
+
+  async getRecent(limit: number = 10): Promise<any[]> {
+    const results = await this.adapter.query(
+      'SELECT * FROM memories ORDER BY timestamp DESC LIMIT ?',
+      [limit]
+    );
+
+    return results.map(r => ({
+      ...r,
+      tags: JSON.parse(r.tags)
+    }));
+  }
+
+  async getTimeWindow(start: Date, end: Date): Promise<any[]> {
+    const results = await this.adapter.query(
+      'SELECT * FROM memories WHERE timestamp >= ? AND timestamp <= ? ORDER BY timestamp DESC',
+      [start.toISOString(), end.toISOString()]
+    );
+
+    return results.map(r => ({
+      ...r,
+      tags: JSON.parse(r.tags)
+    }));
+  }
+
+  async getByTag(tag: string, limit: number = 10): Promise<any[]> {
+    const results = await this.adapter.query(
+      'SELECT * FROM memories WHERE tags LIKE ? ORDER BY timestamp DESC LIMIT ?',
+      [`%${tag}%`, limit]
+    );
+
+    return results.map(r => ({
+      ...r,
+      tags: JSON.parse(r.tags)
+    }));
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.adapter.run('DELETE FROM memories WHERE id = ?', [id]);
+  }
+
+  async clear(): Promise<void> {
+    await this.adapter.run('DELETE FROM memories');
+  }
+
+  private calculateDecay(timestamp: Date): number {
+    const age = Date.now() - timestamp.getTime();
+    return Math.max(0, 1 - (age / this.timeWindow));
+  }
+
+  private async ensureTablesExist(): Promise<void> {
+    // Create memories table if it doesn't exist
+    await this.adapter.run(`
+      CREATE TABLE IF NOT EXISTS memories (
+        id TEXT PRIMARY KEY,
+        content TEXT NOT NULL,
+        importance REAL DEFAULT 0.5,
+        tags TEXT NOT NULL,
+        timestamp TEXT NOT NULL
+      )
+    `);
+  }
+
   async store(content: any, context: string[], importance: number = 0.5): Promise<MemoryRing> {
     const ring: MemoryRing = {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       level: this.calculateRingLevel(importance),
       timestamp: new Date(),
       content,
@@ -50,6 +125,7 @@ export class TreeRingsMemory {
       lastAccessed: new Date()
     };
 
+    console.time(`MemoryStore_Level_${ring.level}`);
     // Store in both in-memory and persistent storage
     await this.prisma.memory.create({
       data: {
@@ -64,6 +140,7 @@ export class TreeRingsMemory {
         lastAccessed: ring.lastAccessed
       }
     });
+    console.timeEnd(`MemoryStore_Level_${ring.level}`);
 
     if (!this.rings.has(ring.level)) {
       this.rings.set(ring.level, []);
@@ -77,6 +154,7 @@ export class TreeRingsMemory {
    * Retrieves memories based on query parameters
    */
   async query(params: MemoryQuery): Promise<MemoryRing[]> {
+    console.time(`MemoryQuery_Level_${params.importance !== undefined ? this.calculateRingLevel(params.importance) : 'Any'}`);
     const memories = await this.prisma.memory.findMany({
       where: {
         context: {
@@ -95,6 +173,7 @@ export class TreeRingsMemory {
       },
       take: params.limit
     });
+    console.timeEnd(`MemoryQuery_Level_${params.importance !== undefined ? this.calculateRingLevel(params.importance) : 'Any'}`);
 
     return memories.map(m => ({
       ...m,

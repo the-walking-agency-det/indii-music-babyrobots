@@ -1,5 +1,6 @@
 // Multi-API Router for AI providers
 // Supports Gemini, OpenAI, Anthropic, and other providers
+import { getAIConfig } from '../config/ai-config';
 
 class AIRouter {
   constructor() {

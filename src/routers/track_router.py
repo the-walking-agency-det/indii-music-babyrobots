@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Annotated
 from uuid import UUID
-from models.track import Track
-from models.user import UserResponse
-from services.track_service import TrackService
-from utils.auth import get_current_active_user
+from ..models.track import Track
+from ..models.user import UserResponse
+from ..services.track_service import TrackService
+from ..utils.auth import get_current_active_user
 
 router = APIRouter(prefix="/tracks", tags=["tracks"])
 

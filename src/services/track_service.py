@@ -1,7 +1,7 @@
 from typing import List, Optional
 from uuid import UUID
 from datetime import datetime
-from models.track import Track
+from ..models.track import Track
 
 # Temporary in-memory storage until we set up the database
 tracks_db: dict[UUID, Track] = {}
