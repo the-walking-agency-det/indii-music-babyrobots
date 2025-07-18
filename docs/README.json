@@ -1,0 +1,21 @@
+{
+  "title": "Indii Music Documentation",
+  "description": "Comprehensive documentation structure and priority guide for the Indii Music platform, covering security implementation, API reference, deployment guides, architecture overview, and frontend development guidelines.",
+  "tags": [
+    "documentation",
+    "security",
+    "api",
+    "deployment",
+    "architecture",
+    "frontend",
+    "guidelines"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:19:45Z",
+  "modified_at": "2025-07-17T13:19:45Z",
+  "original_filename": "README.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Main documentation directory containing project-wide documentation structure",
+  "content_preview": "# Indii Music Documentation\n\n## 📚 Documentation Structure\n\n### 1. Security Implementation\n- Authentication & Authorization\n- CORS Security\n- Rate Limiting\n- Input Validation\n- Security Headers"
+}

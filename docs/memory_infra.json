@@ -1,0 +1,22 @@
+{
+  "title": "🎵 Indii.Music Backend + Memory Architecture Plan",
+  "description": "Comprehensive plan for building scalable, memory-centric AI backend with RAG-enabled memory system, knowledge graph integration, multi-agent memory access, web interfacing, and rush/crash memory system. Includes recommended tech stack and context engineering tips.",
+  "tags": [
+    "backend",
+    "memory-architecture",
+    "rag",
+    "knowledge-graph",
+    "multi-agent",
+    "web-interfacing",
+    "infrastructure",
+    "ai"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "memory_infra.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing memory infrastructure specifications",
+  "content_preview": "# 🎵 Indii.Music Backend + Memory Architecture Plan\n\n> Building infrastructure for intelligent, multi-agent workflows with persistent, RAG-enhanced, memory-aware backends.\n\n---\n\n## 🧠 GOAL"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Database Schema Update - Music & Content Management",
+  "description": "Detailed documentation of newly implemented database tables for Music & Content Management functionality. Includes table structures, relationships, helper functions, testing coverage, and next steps in the database expansion roadmap.",
+  "tags": [
+    "database",
+    "schema",
+    "music-management",
+    "content-management",
+    "tables",
+    "relationships",
+    "testing",
+    "implementation"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "database-schema-update.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing database implementation details",
+  "content_preview": "# Database Schema Update - Music & Content Management\n\n## Overview\nThis document outlines the newly implemented database tables for Music & Content Management functionality, completed as part of the database expansion roadmap."
+}

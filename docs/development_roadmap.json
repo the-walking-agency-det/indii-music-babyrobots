@@ -1,0 +1,22 @@
+{
+  "title": "Indii Music Platform - Development Roadmap (PDR)",
+  "description": "Comprehensive development roadmap using a Tree Ring System approach, detailing development phases from core foundation through advanced features. Includes detailed plans for workspaces, AI integration, marketplace features, and optimization stages.",
+  "tags": [
+    "roadmap",
+    "development",
+    "planning",
+    "tree-ring",
+    "milestones",
+    "features",
+    "timeline",
+    "metrics"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "development_roadmap.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing development planning and roadmap",
+  "content_preview": "# Indii Music Platform - Development Roadmap (PDR)\n\n## Tree Ring System Overview\n**Core → Intermediate → Advanced**\nEach \"ring\" represents a development phase, with each ring building upon the previous one."
+}

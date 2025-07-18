@@ -1,0 +1,11 @@
+{
+    "title": "Project Integration and API Key Issue Report",
+    "description": "Technical report documenting API key integration challenges with Moonshot API, including troubleshooting steps, current setup analysis, and recommendations for resolution.",
+    "author": "William Roberts",
+    "project": "IndieLeap Music Platform",
+    "repository": "indii-music-babyrobots",
+    "tags": ["API", "Integration", "Troubleshooting", "Security", "Moonshot API", "Configuration"],
+    "last_updated": "2025-07-17",
+    "status": "In Progress",
+    "preview": "Documentation of ongoing API key integration challenges with the Moonshot API, including current setup analysis, troubleshooting steps taken, and next steps for resolution."
+}

@@ -1,0 +1,22 @@
+{
+  "title": "System Dependency Graph",
+  "description": "Comprehensive visualization of system dependencies using Mermaid diagrams, including backend data models, services layer, API routes, frontend component tree, UI components, state management, and database schema relationships.",
+  "tags": [
+    "architecture",
+    "dependencies",
+    "diagrams",
+    "backend",
+    "frontend",
+    "database",
+    "components",
+    "services"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "DEPENDENCY_GRAPH.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing system architecture diagrams",
+  "content_preview": "# System Dependency Graph\n\n## Backend Dependencies\n\n### Data Models\n```mermaid\ngraph TD\n    Track[Track Model]\n    Playlist[Playlist Model]\n    User[User Model]\n    Metadata[Metadata Model]"
+}

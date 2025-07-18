@@ -1,0 +1,22 @@
+{
+  "title": "AWS Infrastructure Documentation",
+  "description": "Comprehensive documentation of AWS infrastructure setup, including ECS, ECR, load balancing, VPC configuration, security considerations, monitoring, cost optimization, and disaster recovery plans. Includes deployment process and environment configuration details.",
+  "tags": [
+    "aws",
+    "infrastructure",
+    "deployment",
+    "ecs",
+    "terraform",
+    "security",
+    "monitoring",
+    "disaster-recovery"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "aws-infrastructure.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing infrastructure setup and configuration",
+  "content_preview": "# AWS Infrastructure Documentation\n\nThis document describes the AWS infrastructure setup for the Indii Music BabyRobots application.\n\n## Overview\n\nThe application is deployed on AWS using the following services:"
+}

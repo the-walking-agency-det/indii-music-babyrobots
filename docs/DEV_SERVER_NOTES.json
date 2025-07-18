@@ -1,0 +1,11 @@
+{
+    "title": "Development Server Notes",
+    "description": "Technical documentation of development server configuration, including port settings, server management commands, API endpoint structure, and troubleshooting guidelines.",
+    "author": "William Roberts",
+    "project": "IndieLeap Music Platform",
+    "repository": "indii-music-babyrobots",
+    "tags": ["Development", "Server", "Configuration", "API", "Port", "Next.js"],
+    "last_updated": "2025-01-17",
+    "status": "Active",
+    "preview": "Development server configuration guide including port settings (9000), server management commands, API endpoint structure, and troubleshooting steps."
+}

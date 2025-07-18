@@ -1,0 +1,23 @@
+{
+  "title": "Documentation To-Do List",
+  "description": "Comprehensive documentation task list covering security, API, architecture, deployment, frontend, testing, user documentation, and process documentation. Includes completion status, priorities, and next steps for each documentation area.",
+  "tags": [
+    "todo",
+    "documentation",
+    "tasks",
+    "security",
+    "api",
+    "architecture",
+    "deployment",
+    "frontend",
+    "testing"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "TODO.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing task tracking and planning",
+  "content_preview": "# Documentation To-Do List\n\n## ✅ Completed Security Documentation\n- [x] CORS Implementation (cors.md)\n- [x] Rate Limiting (rate-limiting.md)\n- [x] Security Headers (security-headers.md)"
+}

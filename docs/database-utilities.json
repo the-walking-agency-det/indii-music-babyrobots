@@ -1,0 +1,22 @@
+{
+  "title": "Database Utility Functions - Implementation Documentation",
+  "description": "Detailed documentation of new database utility functions added to lib/db.js, including implementation details, security features, testing results, use cases, and agent instructions. Covers query() and run() functions for parameterized SQL operations.",
+  "tags": [
+    "database",
+    "utilities",
+    "implementation",
+    "sql",
+    "functions",
+    "testing",
+    "security",
+    "documentation"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "database-utilities.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing database utility implementation details",
+  "content_preview": "# Database Utility Functions - Implementation Documentation\n\n## Overview\nAdded two new utility functions to `lib/db.js` to support raw SQL queries with parameterized inputs using the existing `better-sqlite3` connection."
+}

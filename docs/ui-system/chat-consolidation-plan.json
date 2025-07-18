@@ -1,0 +1,22 @@
+{
+  "title": "🎯 CHAT CONSOLIDATION PLAN",
+  "description": "Detailed plan for consolidating multiple chat systems into a unified, feature-rich chat system. Includes current state analysis, consolidation strategy, implementation steps, benefits, metrics, and deletion schedule for legacy components.",
+  "tags": [
+    "ui-system",
+    "chat",
+    "consolidation",
+    "architecture",
+    "implementation-plan",
+    "components",
+    "migration",
+    "feature-matrix"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "chat-consolidation-plan.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "UI system documentation detailing chat system consolidation",
+  "content_preview": "# 🎯 CHAT CONSOLIDATION PLAN\n## BUILD IT → BREAK IT → FIX IT → TEST IT\n\n### 🚨 **CURRENT CHAOS ANALYSIS**\n\n#### **4 Different Chat Systems Doing The Same Thing:**\n1. **`Chat.js`** - Basic chat, CSS modules, `/api/chat`"
+}

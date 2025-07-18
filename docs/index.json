@@ -1,0 +1,22 @@
+{
+  "title": "IndieLeap Documentation Index",
+  "description": "Central index for IndieLeap platform documentation, listing core documents including functional requirements, technology stack, AI concepts, team roles, user journeys, and monetization strategy.",
+  "tags": [
+    "documentation",
+    "index",
+    "requirements",
+    "technology",
+    "ai",
+    "team-roles",
+    "user-journeys",
+    "monetization"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "index.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing main documentation index",
+  "content_preview": "# IndieLeap Documentation Index\n\nThis document serves as the central index for all project documentation related to the IndieLeap platform.\n\n## Core Documents"
+}

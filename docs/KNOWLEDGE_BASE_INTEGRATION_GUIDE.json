@@ -1,0 +1,11 @@
+{
+    "title": "Music Industry Knowledge Base - Integration Guide",
+    "description": "Comprehensive guide for integrating the music industry knowledge base with AI agents, including API endpoints, integration patterns, and structured response formats for industry-specific mentoring.",
+    "author": "William Roberts",
+    "project": "IndieLeap Music Platform",
+    "repository": "indii-music-babyrobots",
+    "tags": ["Knowledge Base", "Integration", "API", "Music Industry", "AI Agents", "Documentation"],
+    "last_updated": "2025-01-17",
+    "status": "Operational",
+    "preview": "Guide for integrating the operational music industry knowledge base with AI agents, featuring API endpoints, integration patterns, and structured responses for industry-specific mentoring."
+}

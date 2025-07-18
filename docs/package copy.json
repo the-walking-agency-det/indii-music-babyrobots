@@ -1,0 +1,19 @@
+{
+  "name": "indii-music-babyrobots",
+  "version": "1.0.0",
+  "description": "Music AI agents with memory and learning capabilities",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "test:memory": "vitest run src/tests/memory/agent-memory.test.ts",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.1",
+    "gpt-3-encoder": "^1.1.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  }
+}

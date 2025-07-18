@@ -15,6 +15,8 @@ This document consolidates all "to-do" items found across the Markdown files in 
 ---
 
 ##  CORE RING (Absolute Foundation)
+
+**Note from Gemini:** Several tasks in this section reference `Shell.tsx`. This file was not found during code review. Further investigation is needed to locate the correct file or confirm its implementation location.
 - [x] Chat-style interface input component (text + optional voice) - Implemented in Shell.tsx
 - [x] Basic shell layout with placeholder panes (left/main/right) - Implemented in Shell.tsx
 - [x] Toggle logic for showing/hiding nested panes - Implemented in Shell.tsx
@@ -46,8 +48,8 @@ This document consolidates all "to-do" items found across the Markdown files in 
 
 ###  Manager
 - [x] Licensing QuickScan pane (genre/mood/audio card grid) - Placeholder component created (ManagerWorkspace.tsx)
-- [ ] Project Playlists (multi-track select + notes)
-- [ ] Metadata preview modal (hover/focus → details)
+- [x] Project Playlists (multi-track select + notes) - Implemented in src/components/music/ProjectPlaylists.tsx
+- [x] Metadata preview modal (hover/focus → details) - Implemented in src/components/music/MetadataPreviewModal.tsx
 
 ---
 

@@ -1,0 +1,22 @@
+{
+  "title": "🧠 Context Engineering Guide",
+  "description": "Comprehensive guide to context engineering principles and implementation for AI systems. Covers memory architecture, RAG integration, agent context rules, and context handoff protocols. Includes specific implementation rules for the Indii Music platform.",
+  "tags": [
+    "context-engineering",
+    "memory-architecture",
+    "rag",
+    "agent-protocols",
+    "memory-buckets",
+    "implementation",
+    "handoff-protocol",
+    "best-practices"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "context_engineering.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing AI system context engineering guidelines",
+  "content_preview": "# 🧠 Context Engineering Guide\n\n## 🔍 What is Context Engineering?\n\nContext Engineering goes beyond prompt engineering by managing structured memory, reasoning paths, agent states, and scoped context windows. It involves:"
+}

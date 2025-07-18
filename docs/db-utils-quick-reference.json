@@ -1,0 +1,22 @@
+{
+  "title": "Database Utilities - Quick Reference",
+  "description": "Quick reference guide for database utility functions, including import statements, function signatures, common patterns, security notes, and error handling examples. Provides practical examples for query() and run() functions.",
+  "tags": [
+    "database",
+    "utilities",
+    "quick-reference",
+    "sql",
+    "examples",
+    "patterns",
+    "security",
+    "error-handling"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "db-utils-quick-reference.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing database utility quick reference",
+  "content_preview": "# Database Utilities - Quick Reference\n\n## Import Statement\n```javascript\nimport { query, run } from './lib/db.js';\n```\n\n## Function Signatures"
+}

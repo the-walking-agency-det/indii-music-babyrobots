@@ -1,0 +1,22 @@
+{
+  "title": "Frontend Interaction Points",
+  "description": "Comprehensive documentation of frontend interaction points throughout the application, including authentication flows, music player features, search and discovery, social features, settings, mobile interactions, error handling, accessibility, and performance considerations.",
+  "tags": [
+    "frontend",
+    "interaction",
+    "user-interface",
+    "authentication",
+    "music-player",
+    "search",
+    "social-features",
+    "accessibility"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "FRONTEND_INTERACTION_POINTS.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing frontend design and interaction specifications",
+  "content_preview": "# Frontend Interaction Points\n\n## User Authentication Flows\n- User Registration\n  - Email/password registration form\n  - Social auth integration points\n  - Email verification interface"
+}

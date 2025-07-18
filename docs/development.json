@@ -1,0 +1,22 @@
+{
+  "title": "Development Guide",
+  "description": "Comprehensive development guide detailing setup steps, workflow procedures, code style guidelines, and pre-commit hook configuration. Includes instructions for virtual environment setup, dependency installation, and development workflow.",
+  "tags": [
+    "development",
+    "setup",
+    "workflow",
+    "code-style",
+    "pre-commit",
+    "testing",
+    "linting",
+    "guidelines"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "development.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing development setup and guidelines",
+  "content_preview": "# Development Guide\n\n## Setup\n\n1. Create and activate virtual environment:\n```bash\npython -m venv .venv\nsource .venv/bin/activate  # On Unix or MacOS\n.venv\\Scripts\\activate     # On Windows"
+}

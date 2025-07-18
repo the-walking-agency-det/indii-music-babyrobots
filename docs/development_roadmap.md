@@ -25,29 +25,32 @@ Each "ring" represents a development phase, with each ring building upon the pre
 ## 🎯 Ring 2: Core Workspaces (Next 2-3 weeks)
 **Priority: Essential functionality for MVP**
 
-### 2.1 Tracks Workspace Enhancement
+### 2.1 Tracks Workspace Enhancement (PRD Section 4.1)
 - [ ] Real track upload functionality
 - [ ] Audio player integration
-- [ ] Track metadata management
+- [ ] Comprehensive track metadata management (including pre-filling from split sheets)
 - [ ] File format validation
+- [ ] DSP channel selection for distribution
+- [ ] Release scheduling and status tracking
 
-### 2.2 Artwork Workspace Development
+### 2.2 Artwork Workspace Development (PRD Section 4.1)
 - [ ] AI artwork generation integration
 - [ ] Template gallery
 - [ ] Image upload/editing tools
 - [ ] Export functionality (multiple formats)
 
-### 2.3 Analytics Workspace
-- [ ] Revenue dashboard widgets
+### 2.3 Analytics Workspace (PRD Sections 3.1, 3.2)
+- [ ] Comprehensive Royalty Dashboard widgets (transparent revenue tracking, itemized breakdowns)
 - [ ] Streaming analytics visualization
 - [ ] Performance metrics charts
+- [ ] Actionable, data-driven insights generation
 - [ ] Export reports functionality
 
-### 2.4 AI Agent Enhancement
+### 2.4 AI Agent Enhancement (PRD Section 7.1)
 - [ ] Connect to OpenAI/Claude APIs
-- [ ] Context-aware responses
+- [ ] Context-aware responses and conversational interface (chatbot)
 - [ ] Agent memory/conversation history
-- [ ] Specialized agent capabilities per PRD Section 7.1
+- [ ] Specialized, role-based agent capabilities (Artist, Fan, Licensor, Service Provider)
 
 ---
 
@@ -56,21 +59,26 @@ Each "ring" represents a development phase, with each ring building upon the pre
 
 ### 3.1 Collaboration Suite (PRD Section 4.2)
 - [ ] Project workspaces
-- [ ] Digital split sheets
+- [ ] Digital split sheets (including electronic signing)
 - [ ] File sharing system
-- [ ] Collaboration chat
+- [ ] Collaboration chat (with time-based comments to audio tracks)
 
 ### 3.2 Marketing Toolkit (PRD Section 4.3)
-- [ ] EPK generator
-- [ ] Smart links creation
-- [ ] Social media post generation
+- [ ] EPK generator (customizable, exportable as PDF or shareable link)
+- [ ] Smart links / Pre-Save links creation (customizable landing pages)
+- [ ] AI Marketing Assistance (tailored advice, social media post generation)
 - [ ] Campaign tracking
 
 ### 3.3 Royalty Management (PRD Section 3)
-- [ ] Revenue tracking dashboard
-- [ ] Payout system integration
+- [ ] Revenue tracking dashboard (multi-source data aggregation)
+- [ ] Payout system integration (supporting PayPal, Wise, direct bank transfers)
 - [ ] Analytics and insights engine
-- [ ] Multi-source data aggregation
+- [ ] Automatic payout statement generation
+
+### 3.4 Live Performance Booking Tools (PRD Section 4.5)
+- [ ] Venue & Promoter Database (searchable)
+- [ ] Booking Outreach & Management (CRM-like features)
+- [ ] Calendar Integration (sync confirmed gigs)
 
 ---
 
@@ -78,35 +86,46 @@ Each "ring" represents a development phase, with each ring building upon the pre
 **Priority: Platform ecosystem**
 
 ### 4.1 Service Provider Hub (PRD Section 5.1)
-- [ ] Provider directory
+- [ ] Provider vetting & onboarding
+- [ ] Provider directory (searchable with filters)
 - [ ] Booking workflow
 - [ ] Escrow system
 - [ ] Rating/review system
+- [ ] Secure messaging, integrated video chat, and secure file vault
 
 ### 4.2 Sync Licensing Portal (PRD Section 5.2)
-- [ ] Music catalog search
-- [ ] Licensing workflow
-- [ ] Contract generation
-- [ ] Payment processing
+- [ ] Licensor Search Interface (advanced filters, NLP, reference track similarity search)
+- [ ] Music Preview (watermarked, with visual waveforms)
+- [ ] Licensing workflow (initiating requests, negotiating terms)
+- [ ] Contract generation and electronic signing
+- [ ] Secure payment processing
+- [ ] Artist control over catalog availability
 
 ### 4.3 Fan Engagement (PRD Section 6)
-- [ ] Sound Locker implementation
-- [ ] Community forums
-- [ ] Artist page customization
-- [ ] Music discovery engine
+- [ ] Sound Locker implementation (content management, access control, monetization)
+- [ ] Community forums (topic-based discussions, posting, replying)
+- [ ] Artist page customization (including WebGL editor, templates, standard fallback)
+- [ ] Music discovery engine (search, filtering, recommendation algorithms, NLP for discovery)
+- [ ] Playlist functionality (create and share playlists)
+- [ ] Activity Feed
+
+### 4.4 Marketplace Dispute Resolution Workflow (PRD Section 5.3)
+- [ ] Structured Process (direct negotiation, platform-facilitated mediation)
+- [ ] Documentation & Tracking (timestamped record of dispute process)
+- [ ] Enforcement Mechanisms (e.g., processing refunds, adjusting user ratings)
 
 ---
 
 ## 🎯 Ring 5: Advanced AI & Optimization (Month 4+)
 **Priority: Innovation & scaling**
 
-### 5.1 Advanced AI Features
-- [ ] Music analysis and auto-tagging
-- [ ] Personalized recommendations
+### 5.1 Advanced AI Features (PRD Sections 7.3, 7.4)
+- [ ] AI-Powered Music analysis and auto-tagging
+- [ ] AI-Driven Personalized recommendations (for artists and fans)
 - [ ] Predictive analytics
 - [ ] Voice-to-text for collaboration
 
-### 5.2 Performance & Scale
+### 5.2 Performance & Scale (PRD Section 8)
 - [ ] Database optimization
 - [ ] CDN integration
 - [ ] Mobile app development

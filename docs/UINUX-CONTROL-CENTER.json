@@ -1,0 +1,23 @@
+{
+  "title": "🎛️ UINUX CONTROL CENTER",
+  "description": "Strategic plan for consolidating and organizing UI/UX chaos, including chat systems, layout systems, profile forms, and dashboard components. Details consolidation strategy, progressive enhancement, cleanup phases, and success metrics for unified UI system.",
+  "tags": [
+    "ui-ux",
+    "consolidation",
+    "strategy",
+    "components",
+    "layout",
+    "chat-system",
+    "profiles",
+    "dashboards",
+    "optimization"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "UINUX-CONTROL-CENTER.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing UI/UX system organization plans",
+  "content_preview": "# 🎛️ UINUX CONTROL CENTER\n## Getting Your UI/UX Chaos Under Control\n\n### 🚨 **CURRENT CHAOS ASSESSMENT**\n\n#### 🔴 **CRITICAL DUPLICATIONS DETECTED**\n- **4 Different Chat Components** → Need to consolidate"
+}

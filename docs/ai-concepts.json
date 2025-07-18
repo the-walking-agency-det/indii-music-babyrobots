@@ -1,0 +1,22 @@
+{
+  "title": "Core Concepts for Building an Agentic AI Music Manager ('Indii')",
+  "description": "Comprehensive overview of core concepts for building the Indii AI Music Manager, covering agent core design, goal orientation, knowledge management, tool integration, orchestration, user interaction, proactivity, and safety considerations.",
+  "tags": [
+    "ai",
+    "concepts",
+    "agent-design",
+    "llm",
+    "knowledge-management",
+    "tool-integration",
+    "orchestration",
+    "safety"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "ai-concepts.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing AI system design concepts",
+  "content_preview": "# Core Concepts for Building an Agentic AI Music Manager ('Indii')\n\nThis document outlines foundational concepts relevant to designing and building an \"agentic\" AI system like the 'Indii' Music Manager assistant. These principles draw from general AI agent design and examples like Atlassian Rovo, tailored to the specific needs and functionalities discussed for Indii."
+}

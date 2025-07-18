@@ -1,0 +1,11 @@
+{
+  "title": "IndieLeap: Key User Journey Outlines",
+  "description": "Detailed documentation of key user journeys within the IndieLeap platform, including artist onboarding and first release, fan discovery and engagement, and licensor search and license request processes.",
+  "author": "William Roberts",
+  "project": "IndieLeap Music Platform",
+  "repo_context": "indii-music-babyrobots",
+  "tags": ["user journey", "workflow", "onboarding", "artist", "fan", "licensor", "UX"],
+  "created_at": "2025-07-09T15:05:00Z",
+  "modified_at": "2025-07-09T15:05:00Z",
+  "preview": "This document outlines the high-level steps for major user interactions within the IndieLeap platform, focusing on key journeys for artists, fans, and licensors."
+}

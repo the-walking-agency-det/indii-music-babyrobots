@@ -1,0 +1,22 @@
+{
+  "title": "Documentation Plan",
+  "description": "Comprehensive documentation planning checklist covering API documentation, frontend documentation, deployment guides, user guides, development guides, and documentation management. Includes detailed sections for each documentation type with specific tasks and requirements.",
+  "tags": [
+    "documentation",
+    "planning",
+    "api",
+    "frontend",
+    "deployment",
+    "development",
+    "user-guides",
+    "maintenance"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "DOCUMENTATION_PLAN.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "Documentation directory containing planning and structure guides",
+  "content_preview": "# Documentation Plan\n\n## API Documentation\n### OpenAPI/Swagger Documentation\n- [ ] Complete API endpoint specifications\n  - Authentication endpoints\n  - User management endpoints\n  - Music track endpoints"
+}
