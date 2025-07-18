@@ -1,0 +1,22 @@
+{
+  "title": "06 - DEVOPS: CI/CD, Environments, and Deployment",
+  "description": "Comprehensive DevOps guide detailing CI/CD pipeline configuration, environment management, deployment strategies, and monitoring practices. Includes detailed workflows for continuous integration, preview deployments, and production releases.",
+  "tags": [
+    "devops",
+    "ci-cd",
+    "deployment",
+    "environments",
+    "monitoring",
+    "logging",
+    "github-actions",
+    "automation"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "06_DEVOPS.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory containing DevOps and deployment guidelines",
+  "content_preview": "# 06 - DEVOPS: CI/CD, Environments, and Deployment\n\n**Automating the path from code to production.**\n\n---\n\n## 1. Environments\n\n### 1.1. Standard Environments"
+}

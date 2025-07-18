@@ -1,0 +1,22 @@
+{
+  "title": "02 - PATTERNS: Architectural and Design Patterns",
+  "description": "Comprehensive guide outlining standardized architectural and design patterns for both frontend and backend development. Includes component architecture, state management, API design, asynchronous operations, and configuration management practices.",
+  "tags": [
+    "architecture",
+    "design-patterns",
+    "frontend",
+    "backend",
+    "api-design",
+    "state-management",
+    "async-patterns",
+    "configuration"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:21:56Z",
+  "modified_at": "2025-07-17T13:21:56Z",
+  "original_filename": "02_PATTERNS.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory containing architectural and design pattern guidelines",
+  "content_preview": "# 02 - PATTERNS: Architectural and Design Patterns\n\n**Standardized approaches to common problems for a cohesive and maintainable codebase.**\n\n---\n\n## 1. Application Architecture\n\n### 1.1. Frontend (React/Next.js)"
+}

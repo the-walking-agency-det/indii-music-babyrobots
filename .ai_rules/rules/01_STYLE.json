@@ -1,0 +1,22 @@
+{
+  "title": "01 - STYLE: Code Style, Formatting, and Linting",
+  "description": "Comprehensive guide detailing mandatory code style, formatting, and linting practices for the project. Includes automated formatting guidelines, linting rules, import order, commenting standards, and CSS/HTML/Markdown specifics.",
+  "tags": [
+    "style-guide",
+    "code-formatting",
+    "linting",
+    "typescript",
+    "javascript",
+    "css",
+    "markdown",
+    "standards"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:21:56Z",
+  "modified_at": "2025-07-17T13:21:56Z",
+  "original_filename": "01_STYLE.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory containing style and formatting guidelines",
+  "content_preview": "# 01 - STYLE: Code Style, Formatting, and Linting\n\n**Consistency is key. All code must adhere to these style guidelines.**\n\n---\n\n## 1. Universal Style Principles\n\n### 1.1. Automated Formatting is Mandatory\n- All code MUST be formatted automatically before commit."
+}

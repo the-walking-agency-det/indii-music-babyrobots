@@ -1,0 +1,22 @@
+{
+  "title": "08 - TOOLING: Development and Build Toolchain",
+  "description": "Comprehensive guide detailing the development and build toolchain, including Node.js environment setup, IDE configuration, build tools, code quality tools, and AI agent tooling requirements. Focuses on consistent tooling across the development team.",
+  "tags": [
+    "tooling",
+    "development-environment",
+    "build-tools",
+    "ide",
+    "code-quality",
+    "formatting",
+    "linting",
+    "ai-agents"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "08_TOOLING.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory containing development tooling standards",
+  "content_preview": "# 08 - TOOLING: Development and Build Toolchain\n\n**The right tools for the job, configured consistently.**\n\n---\n\n## 1. Development Environment\n\n### 1.1. Node.js & Package Manager"
+}

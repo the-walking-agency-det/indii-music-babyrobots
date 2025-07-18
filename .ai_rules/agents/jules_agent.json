@@ -1,0 +1,22 @@
+{
+  "title": "Google Jules AI Agent Definition",
+  "description": "Definition of the Jules AI agent, an autonomous automation and maintenance specialist focused on automated testing, documentation generation, dependency management, and code maintenance tasks. Operates primarily through GitHub API and development tools.",
+  "tags": [
+    "ai-agent",
+    "automation",
+    "testing",
+    "documentation",
+    "dependency-management",
+    "code-maintenance",
+    "github-integration",
+    "devops"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:21:56Z",
+  "modified_at": "2025-07-17T13:21:56Z",
+  "original_filename": "jules_agent.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory defining specialized agent personas and behaviors",
+  "content_preview": "# Google Jules AI Agent Definition\n\n## Role\n**The Autonomous Automation & Maintenance Specialist**\n\n## Core Responsibilities\n1. **Automated Testing:**\n    - Write comprehensive unit, integration, and E2E tests for existing or new code."
+}

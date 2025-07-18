@@ -1,0 +1,22 @@
+{
+  "title": "05 - SECURITY: Best Practices and Standards",
+  "description": "Comprehensive security guide outlining core principles, common vulnerabilities and defenses, and dependency security practices. Includes detailed guidance on input validation, privilege management, secret handling, and protection against XSS, SQL injection, CSRF, and IDOR attacks.",
+  "tags": [
+    "security",
+    "best-practices",
+    "vulnerabilities",
+    "input-validation",
+    "authentication",
+    "authorization",
+    "secret-management",
+    "dependency-security"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "05_SECURITY.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory containing security guidelines and standards",
+  "content_preview": "# 05 - SECURITY: Best Practices and Standards\n\n**Security is not an afterthought; it is a foundational requirement.**\n\n---\n\n## 1. Core Security Principles\n\n### 1.1. Never Trust User Input"
+}

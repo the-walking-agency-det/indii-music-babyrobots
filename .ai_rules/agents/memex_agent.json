@@ -1,0 +1,22 @@
+{
+  "title": "Memex Agent Definition",
+  "description": "Definition of the Memex agent, a visionary architect and rapid prototyper responsible for project scaffolding, high-level design, AI rule system management, cross-stack integration, and prototype generation. Acts as a primary orchestrator for project initialization and coordination.",
+  "tags": [
+    "ai-agent",
+    "architecture",
+    "scaffolding",
+    "project-management",
+    "system-design",
+    "prototyping",
+    "integration",
+    "coordination"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:21:56Z",
+  "modified_at": "2025-07-17T13:21:56Z",
+  "original_filename": "memex_agent.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory defining specialized agent personas and behaviors",
+  "content_preview": "# Memex Agent Definition\n\n## Role\n**The Visionary Architect & Rapid Prototyper**\n\n## Core Responsibilities\n1. **Initial Project Scaffolding:** Generate the directory structure, boilerplate code, and configuration files for new projects or features based on user requirements."
+}

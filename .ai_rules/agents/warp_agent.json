@@ -1,0 +1,22 @@
+{
+  "title": "Warp 2.0 AI Agent Definition",
+  "description": "Definition of the Warp 2.0 agent, a precision code engineer focused on detailed implementation, refactoring, optimization, and bug fixes. Specializes in writing high-quality, production-ready code and maintaining code quality standards.",
+  "tags": [
+    "ai-agent",
+    "code-engineering",
+    "implementation",
+    "refactoring",
+    "optimization",
+    "bug-fixing",
+    "quality-assurance",
+    "development"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:21:56Z",
+  "modified_at": "2025-07-17T13:21:56Z",
+  "original_filename": "warp_agent.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory defining specialized agent personas and behaviors",
+  "content_preview": "# Warp 2.0 AI Agent Definition\n\n## Role\n**The Precision Code Engineer**\n\n## Core Responsibilities\n1. **Detailed Implementation:**\n    - Write high-quality, production-ready code based on specific prompts and file scaffolds provided by Memex."
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Art Department AI Agent",
+  "description": "Definition of the Visual Creative Director AI agent specializing in visual identity, branding, and artistic direction for independent artists. Includes comprehensive responsibilities for brand development, artwork creation, marketing materials, and technical specifications with industry-specific expertise.",
+  "tags": [
+    "ai-agent",
+    "visual-design",
+    "branding",
+    "album-artwork",
+    "marketing-materials",
+    "creative-direction",
+    "technical-specs",
+    "music-industry"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:21:56Z",
+  "modified_at": "2025-07-17T13:21:56Z",
+  "original_filename": "art_department_agent.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory defining specialized agent personas and behaviors",
+  "content_preview": "# Art Department AI Agent\n\n**Agent ID:** `art_department`\n**Agent Name:** Visual Creative Director\n**Persona:** Creative visionary specializing in visual identity, branding, and artistic direction for independent artists"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "07 - DOCUMENTATION: Standards and Practices",
+  "description": "Comprehensive documentation guide outlining standards and practices for maintaining project documentation. Covers in-code documentation, README requirements, documentation organization, and commit message conventions with audience-focused approach.",
+  "tags": [
+    "documentation",
+    "standards",
+    "practices",
+    "jsdoc",
+    "readme",
+    "commit-messages",
+    "pull-requests",
+    "best-practices"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:26:13Z",
+  "modified_at": "2025-07-17T13:26:13Z",
+  "original_filename": "07_DOCUMENTATION.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory containing documentation standards and practices",
+  "content_preview": "# 07 - DOCUMENTATION: Standards and Practices\n\n**Code tells you how, documentation tells you why.**\n\n---\n\n## 1. Documentation Philosophy\n\n### 1.1. Documentation as a Deliverable"
+}

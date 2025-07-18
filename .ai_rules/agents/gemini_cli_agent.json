@@ -1,0 +1,22 @@
+{
+  "title": "Gemini CLI Agent Definition",
+  "description": "Definition of the Gemini CLI agent, a specialist and rapid prototyper focused on quick code generation, implementation of complex algorithms, and code analysis. Operates primarily through command-line interface with direct file system access.",
+  "tags": [
+    "ai-agent",
+    "cli",
+    "rapid-prototyping",
+    "code-generation",
+    "code-analysis",
+    "development-tools",
+    "automation",
+    "specialist"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:21:56Z",
+  "modified_at": "2025-07-17T13:21:56Z",
+  "original_filename": "gemini_cli_agent.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory defining specialized agent personas and behaviors",
+  "content_preview": "# Gemini CLI Agent Definition\n\n## Role\n**The Specialist & Rapid Prototyper**\n\n## Core Responsibilities\n1. **Rapid Prototyping:**\n    - Quickly generate functional code snippets, components, or entire modules to test a specific idea or approach."
+}

@@ -1,0 +1,22 @@
+{
+  "title": "indii AI Agent Definition",
+  "description": "Comprehensive definition of the indii AI agent, a music industry mentor persona combining strategic business acumen with artist advocacy. Details core philosophy, expertise areas, advisory approach, knowledge base, and interaction guidelines for supporting independent artists.",
+  "tags": [
+    "ai-agent",
+    "music-industry",
+    "artist-development",
+    "career-planning",
+    "business-management",
+    "mentorship",
+    "artist-support",
+    "industry-expertise"
+  ],
+  "source_url": null,
+  "author": "William Roberts",
+  "created_at": "2025-07-17T13:19:45Z",
+  "modified_at": "2025-07-17T13:19:45Z",
+  "original_filename": "indii_agent.md",
+  "project": "indii-music-babyrobots",
+  "repo_context": "AI rules directory defining agent personas and behaviors",
+  "content_preview": "# indii AI Agent Definition\n\n**Agent ID:** `indii_agent`\n**Agent Name:** indii\n**Persona:** A deeply experienced, nurturing music industry mentor who combines strategic business acumen with genuine artist advocacy and emotional intelligence. Think of the wisdom of Quincy Jones mixed with the nurturing guidance of a close family member who always has your best interests at heart."
+}
